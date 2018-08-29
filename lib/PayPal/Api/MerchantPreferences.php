@@ -29,7 +29,7 @@ class MerchantPreferences extends PayPalModel
      * Identifier of the merchant_preferences. 128 characters max.
      *
      * @param string $id
-     * 
+     *
      * @return $this
      */
     public function setId($id)
@@ -52,7 +52,7 @@ class MerchantPreferences extends PayPalModel
      * Setup fee amount. Default is 0.
      *
      * @param \PayPal\Api\Currency $setup_fee
-     * 
+     *
      * @return $this
      */
     public function setSetupFee($setup_fee)
@@ -80,7 +80,10 @@ class MerchantPreferences extends PayPalModel
      */
     public function setCancelUrl($cancel_url)
     {
-        UrlValidator::validate($cancel_url, "CancelUrl");
+        if (!is_null($cancel_url)) {
+            UrlValidator::validate($cancel_url, "CancelUrl");
+        }
+
         $this->cancel_url = $cancel_url;
         return $this;
     }
@@ -104,7 +107,10 @@ class MerchantPreferences extends PayPalModel
      */
     public function setReturnUrl($return_url)
     {
-        UrlValidator::validate($return_url, "ReturnUrl");
+        if (!is_null($return_url)) {
+            UrlValidator::validate($return_url, "ReturnUrl");
+        }
+
         $this->return_url = $return_url;
         return $this;
     }
@@ -128,7 +134,10 @@ class MerchantPreferences extends PayPalModel
      */
     public function setNotifyUrl($notify_url)
     {
-        UrlValidator::validate($notify_url, "NotifyUrl");
+        if (!is_null($notify_url)) {
+            UrlValidator::validate($notify_url, "NotifyUrl");
+        }
+
         $this->notify_url = $notify_url;
         return $this;
     }
@@ -147,7 +156,7 @@ class MerchantPreferences extends PayPalModel
      * Total number of failed attempts allowed. Default is 0, representing an infinite number of failed attempts.
      *
      * @param string $max_fail_attempts
-     * 
+     *
      * @return $this
      */
     public function setMaxFailAttempts($max_fail_attempts)
@@ -170,7 +179,7 @@ class MerchantPreferences extends PayPalModel
      * Allow auto billing for the outstanding amount of the agreement in the next cycle. Allowed values: `YES`, `NO`. Default is `NO`.
      *
      * @param string $auto_bill_amount
-     * 
+     *
      * @return $this
      */
     public function setAutoBillAmount($auto_bill_amount)
@@ -193,7 +202,7 @@ class MerchantPreferences extends PayPalModel
      * Action to take if a failure occurs during initial payment. Allowed values: `CONTINUE`, `CANCEL`. Default is continue.
      *
      * @param string $initial_fail_amount_action
-     * 
+     *
      * @return $this
      */
     public function setInitialFailAmountAction($initial_fail_amount_action)
@@ -216,7 +225,7 @@ class MerchantPreferences extends PayPalModel
      * Payment types that are accepted for this plan.
      *
      * @param string $accepted_payment_type
-     * 
+     *
      * @return $this
      */
     public function setAcceptedPaymentType($accepted_payment_type)
@@ -239,7 +248,7 @@ class MerchantPreferences extends PayPalModel
      * char_set for this plan.
      *
      * @param string $char_set
-     * 
+     *
      * @return $this
      */
     public function setCharSet($char_set)
