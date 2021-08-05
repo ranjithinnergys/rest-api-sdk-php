@@ -117,7 +117,7 @@ class PayPalHttpConnection
         foreach($arr as $key => $value) {
             $retStr .= $key . ': ' . $value . ', ';
         }
-        rtrim($retStr, ', ');
+        $retStr = rtrim($retStr, ', ');
         return $retStr;
     }
 
