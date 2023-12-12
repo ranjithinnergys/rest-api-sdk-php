@@ -24,7 +24,7 @@ class WebProfileFunctionalTest extends TestCase
 
     public $apiContext;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $className = $this->getClassName();
         $testName = $this->getName();

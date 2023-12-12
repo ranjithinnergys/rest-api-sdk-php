@@ -123,7 +123,7 @@ class InvoiceTest extends TestCase
     public function testUrlValidationForLogoUrl()
     {
         $obj = new Invoice();
-        $obj->setLogoUrl(null);
+        $obj->setLogoUrl('wrong-url');
     }
     /**
      * @dataProvider mockProvider

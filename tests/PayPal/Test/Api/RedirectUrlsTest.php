@@ -62,7 +62,7 @@ class RedirectUrlsTest extends TestCase
     public function testUrlValidationForReturnUrl()
     {
         $obj = new RedirectUrls();
-        $obj->setReturnUrl(null);
+        $obj->setReturnUrl('wrong-url');
     }
     /**
      * @expectedException \InvalidArgumentException
@@ -71,6 +71,6 @@ class RedirectUrlsTest extends TestCase
     public function testUrlValidationForCancelUrl()
     {
         $obj = new RedirectUrls();
-        $obj->setCancelUrl(null);
+        $obj->setCancelUrl('wrong-url');
     }
 }

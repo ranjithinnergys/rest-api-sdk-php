@@ -96,6 +96,6 @@ class TemplateDataTest extends TestCase
     public function testUrlValidationForLogoUrl()
     {
         $obj = new TemplateData();
-        $obj->setLogoUrl(null);
+        $obj->setLogoUrl('wrong-url');
     }
 }

@@ -13,7 +13,7 @@ class PPConfigManagerTest extends TestCase
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new \ReflectionClass('PayPal\Core\PayPalConfigManager');
         runkit_constant_remove('PP_CONFIG_PATH');
@@ -23,7 +23,7 @@ class PPConfigManagerTest extends TestCase
      * Tears down the fixture, for example, closes a network connection.
      * This method is called after a test is executed.
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $property = $this->object->getProperty('instance');
         $property->setValue(null);
@@ -61,7 +61,7 @@ class PPConfigManagerTest extends TestCase
         $this->object = PayPalConfigManager::getInstance();
 
         $ret = $this->object->getIniPrefix();
-        $this->assertContains('acct1', $ret);
+        $this->assertStringContainsString('acct1', $ret);
         $this->assertEquals(sizeof($ret), 2);
 
         $ret = $this->object->getIniPrefix('TestClientId');

@@ -76,7 +76,7 @@ class VerifyWebhookSignatureTest extends TestCase
     public function testUrlValidationForCertUrl()
     {
         $obj = new VerifyWebhookSignature();
-        $obj->setCertUrl(null);
+        $obj->setCertUrl('wrong-url');
     }
 
     public function testToJsonToIncludeRequestBodyAsWebhookEvent() {

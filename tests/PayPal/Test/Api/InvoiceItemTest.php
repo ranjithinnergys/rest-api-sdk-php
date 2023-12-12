@@ -76,6 +76,6 @@ class InvoiceItemTest extends TestCase
     public function testUrlValidationForImageUrl()
     {
         $obj = new InvoiceItem();
-        $obj->setImageUrl(null);
+        $obj->setImageUrl('wrong-url');
     }
 }

@@ -1,6 +1,7 @@
 <?php
 namespace PayPal\Test\Common;
 
+use InvalidArgumentException;
 use PayPal\Api\Amount;
 use PayPal\Api\Currency;
 use PayPal\Api\Details;
@@ -84,7 +85,7 @@ class FormatConverterTest extends TestCase
         try {
             FormatConverter::formatToPrice("1.234", $input);
         } catch (\InvalidArgumentException $ex) {
-            $this->assertContains("value cannot have decimals for", $ex->getMessage());
+            $this->assertStringContainsString("value cannot have decimals for", $ex->getMessage());
         }
     }
 
@@ -138,10 +139,11 @@ class FormatConverterTest extends TestCase
 
     /**
      * @dataProvider apiModelSettersInvalidProvider
-     * @expectedException \InvalidArgumentException
      */
     public function testSettersOfKnownApiModelInvalid($class, $methodName, $values)
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $obj = new $class();
         $setter = "set" . $methodName;
         $obj->$setter($values[0]);

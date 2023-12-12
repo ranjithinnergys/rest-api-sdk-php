@@ -54,7 +54,7 @@ class OauthHandler implements IPayPalHandler
 
         $headers = array(
             "User-Agent"    => PayPalUserAgent::getValue(PayPalConstants::SDK_NAME, PayPalConstants::SDK_VERSION),
-            "Authorization" => "Basic " . base64_encode($options['clientId'] . ":" . $options['clientSecret']),
+            "Authorization" => "Basic " . base64_encode(($options['clientId'] ?? '') . ":" . ($options['clientSecret'] ?? '')),
             "Accept"        => "*/*"
         );
         $httpConfig->setHeaders($headers);
@@ -71,7 +71,7 @@ class OauthHandler implements IPayPalHandler
      *
      * @param array $config
      *
-     * @return PayPalHttpConfig
+     * @return string
      * @throws \PayPal\Exception\PayPalConfigurationException
      */
     private static function _getEndpoint($config)

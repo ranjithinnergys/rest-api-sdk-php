@@ -28,28 +28,27 @@ class UrlValidatorTest extends TestCase
     {
         return array(
             array("www.paypal.com"),
-            array(""),
-            array(null),
+            array("as"),
+            array('wrong-email'),
             array("https://www.sub_domain_with_underscore.paypal.com"),
         );
     }
 
     /**
-     *
      * @dataProvider positiveProvider
      */
     public function testValidate($input)
     {
+        $this->expectNotToPerformAssertions();
         UrlValidator::validate($input, "Test Value");
     }
 
     /**
-     *
      * @dataProvider invalidProvider
-     * @expectedException \InvalidArgumentException
      */
     public function testValidateException($input)
     {
+        $this->expectException(\InvalidArgumentException::class);
         UrlValidator::validate($input, "Test Value");
     }
 }

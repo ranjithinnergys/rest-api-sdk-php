@@ -89,7 +89,7 @@ class CartBaseTest extends TestCase
     public function testUrlValidationForNotifyUrl()
     {
         $obj = new CartBase();
-        $obj->setNotifyUrl(null);
+        $obj->setNotifyUrl('wrong-url');
     }
 
     /**
@@ -99,6 +99,6 @@ class CartBaseTest extends TestCase
     public function testUrlValidationForOrderUrl()
     {
         $obj = new CartBase();
-        $obj->setOrderUrl(null);
+        $obj->setOrderUrl('wrong-url');
     }
 }

@@ -43,12 +43,4 @@ class TransactionTest extends TestCase
         $this->assertEquals(self::getJson(), $obj->toJson());
         return $obj;
     }
-
-    /**
-     * @depends testSerializationDeserialization
-     * @param Transaction $obj
-     */
-    public function testGetters($obj)
-    {
-    }
 }

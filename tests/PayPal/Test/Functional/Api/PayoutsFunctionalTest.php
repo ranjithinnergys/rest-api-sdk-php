@@ -26,7 +26,7 @@ class PayoutsFunctionalTest extends TestCase
 
     public static $batchId;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $className = $this->getClassName();
         $testName = $this->getName();

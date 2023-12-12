@@ -88,6 +88,6 @@ class ItemTest extends TestCase
     public function testUrlValidationForUrl()
     {
         $obj = new Item();
-        $obj->setUrl(null);
+        $obj->setUrl('wrong-url');
     }
 }

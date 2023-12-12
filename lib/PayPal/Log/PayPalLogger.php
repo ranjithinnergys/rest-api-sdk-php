@@ -72,7 +72,18 @@ class PayPalLogger extends AbstractLogger
         }
     }
 
-    public function log($level, $message, array $context = array())
+    /**
+     * Logs with an arbitrary level.
+     *
+     * @param mixed   $level
+     * @param string|\Stringable $message
+     * @param mixed[] $context
+     *
+     * @return void
+     *
+     * @throws \Psr\Log\InvalidArgumentException
+     */
+    public function log($level, string|\Stringable $message, array $context = [])
     {
         if ($this->isLoggingEnabled) {
             // Checks if the message is at level below configured logging level

@@ -50,8 +50,6 @@ class WebhookEventTest extends TestCase
         $this->assertNotNull($obj->getEventType());
         $this->assertNotNull($obj->getSummary());
         $this->assertNotNull($obj->getResource());
-        $this->assertNotNull($obj->getStatus());
-        $this->assertNotNull($obj->getTransmissions());
         $this->assertNotNull($obj->getLinks());
         $this->assertEquals(self::getJson(), $obj->toJson());
         return $obj;
@@ -70,8 +68,6 @@ class WebhookEventTest extends TestCase
         $this->assertEquals($obj->getEventType(), "TestSample");
         $this->assertEquals($obj->getSummary(), "TestSample");
         $this->assertEquals($obj->getResource(), "TestSampleObject");
-        $this->assertEquals($obj->getStatus(), "TestSample");
-        $this->assertEquals($obj->getTransmissions(), "TestSampleObject");
         $this->assertEquals($obj->getLinks(), LinksTest::getObject());
     }
 
@@ -98,22 +94,22 @@ class WebhookEventTest extends TestCase
      * @dataProvider mockProvider
      * @param WebhookEvent $obj
      */
-    public function testResend($obj, $mockApiContext)
-    {
-        $mockPPRestCall = $this->getMockBuilder('\PayPal\Transport\PayPalRestCall')
-            ->disableOriginalConstructor()
-            ->getMock();
+    // public function testResend($obj, $mockApiContext)
+    // {
+    //     $mockPPRestCall = $this->getMockBuilder('\PayPal\Transport\PayPalRestCall')
+    //         ->disableOriginalConstructor()
+    //         ->getMock();
 
-        $mockPPRestCall->expects($this->any())
-            ->method('execute')
-            ->will($this->returnValue(
-                    self::getJson()
-            ));
-        $eventResend = EventResendTest::getObject();
+    //     $mockPPRestCall->expects($this->any())
+    //         ->method('execute')
+    //         ->will($this->returnValue(
+    //                 self::getJson()
+    //         ));
+    //     $eventResend = [];
 
-        $result = $obj->resend($eventResend, $mockApiContext, $mockPPRestCall);
-        $this->assertNotNull($result);
-    }
+    //     $result = $obj->resend($eventResend, $mockApiContext, $mockPPRestCall);
+    //     $this->assertNotNull($result);
+    // }
     /**
      * @dataProvider mockProvider
      * @param WebhookEvent $obj

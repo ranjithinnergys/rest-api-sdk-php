@@ -63,6 +63,6 @@ class FileAttachmentTest extends TestCase
     public function testUrlValidationForUrl()
     {
         $obj = new FileAttachment();
-        $obj->setUrl(null);
+        $obj->setUrl('wrong-url');
     }
 }

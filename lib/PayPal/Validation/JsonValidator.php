@@ -2,6 +2,8 @@
 
 namespace PayPal\Validation;
 
+use Throwable;
+
 /**
  * Class JsonValidator
  *
@@ -19,17 +21,28 @@ class JsonValidator
      */
     public static function validate($string, $silent = false)
     {
-        @json_decode($string);
-        if (json_last_error() != JSON_ERROR_NONE) {
-            if ($string === '' || $string === null) {
-                return true;
+        try {
+            @json_decode($string);
+
+            if (json_last_error() != JSON_ERROR_NONE) {
+                if ($string === '' || $string === null) {
+                    return true;
+                }
+                if ($silent == false) {
+                    //Throw an Exception for string or array
+                    throw new \InvalidArgumentException("Invalid JSON String");
+                }
+                return false;
             }
+        } catch (Throwable $th) {
             if ($silent == false) {
                 //Throw an Exception for string or array
                 throw new \InvalidArgumentException("Invalid JSON String");
             }
+
             return false;
         }
+
         return true;
     }
 }

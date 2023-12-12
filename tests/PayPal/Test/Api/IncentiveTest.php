@@ -76,6 +76,6 @@ class IncentiveTest extends TestCase
     public function testUrlValidationForLogoImageUrl()
     {
         $obj = new Incentive();
-        $obj->setLogoImageUrl(null);
+        $obj->setLogoImageUrl('wrong-url');
     }
 }

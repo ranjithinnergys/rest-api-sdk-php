@@ -78,13 +78,13 @@ class MetadataTest extends TestCase
     public function testUrlValidationForPayerViewUrl()
     {
         $obj = new Metadata();
-        $obj->setPayerViewUrl(null);
+        $obj->setPayerViewUrl('wrong-url');
     }
 
     public function testUrlValidationForPayerViewUrlDeprecated()
     {
         $obj = new Metadata();
-        $obj->setPayer_view_url(null);
-        $this->assertNull($obj->getPayer_view_url());
+        $obj->setPayerViewUrl(null);
+        $this->assertNull($obj->getPayerViewUrl());
     }
 }

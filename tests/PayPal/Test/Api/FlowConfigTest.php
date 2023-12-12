@@ -67,7 +67,7 @@ class FlowConfigTest extends TestCase
     public function testUrlValidationForBankTxnPendingUrl()
     {
         $obj = new FlowConfig();
-        $obj->setBankTxnPendingUrl(null);
+        $obj->setBankTxnPendingUrl('wrong-url');
     }
 
 }

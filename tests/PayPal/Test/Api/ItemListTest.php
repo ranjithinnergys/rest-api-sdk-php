@@ -59,7 +59,7 @@ class ItemListTest extends TestCase
         $this->assertEquals($obj->getShippingMethod(), "TestSample");
         $this->assertEquals($obj->getShippingPhoneNumber(), "TestSample");
     }
-	
+
 	/**
      * @depends testSerializationDeserialization
      * @param ItemList $obj
@@ -74,8 +74,8 @@ class ItemListTest extends TestCase
 		$obj->addItem($item3);
 		$this->assertCount(3, $obj->getItems());
 		$obj->removeItem($item2);
-		
+
 		$this->assertCount(2, $obj->getItems());
-		$this->assertContains('"items":[', $obj->toJSON());
+		$this->assertStringContainsString('"items":[', $obj->toJSON());
     }
 }

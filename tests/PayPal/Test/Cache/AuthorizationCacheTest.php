@@ -17,7 +17,7 @@ class AuthorizationCacheTest extends TestCase
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
     }
 
@@ -25,7 +25,7 @@ class AuthorizationCacheTest extends TestCase
      * Tears down the fixture, for example, closes a network connection.
      * This method is called after a test is executed.
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -60,14 +60,16 @@ class AuthorizationCacheTest extends TestCase
     public function testCachePath($config, $expected)
     {
         $result = AuthorizationCache::cachePath($config);
-        $this->assertContains($expected, $result);
+        $this->assertStringContainsString($expected, $result);
     }
 
     public function testCacheDisabled()
     {
         // 'cache.enabled' => true,
         AuthorizationCache::push(array('cache.enabled' => false), 'clientId', 'accessToken', 'tokenCreateTime', 'tokenExpiresIn');
-        AuthorizationCache::pull(array('cache.enabled' => false), 'clientId');
+        $result = AuthorizationCache::pull(array('cache.enabled' => false), 'clientId');
+
+        $this->assertNull($result);
     }
 
     public function testCachePush()
@@ -95,7 +97,7 @@ class AuthorizationCacheTest extends TestCase
     {
         $result = AuthorizationCache::pull(array('cache.enabled' => true, 'cache.FileName' => AuthorizationCacheTest::CACHE_FILE), 'clientId');
         $this->assertNotNull($result);
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertEquals('clientId', $result['clientId']);
         $this->assertEquals('accessToken', $result['accessTokenEncrypted']);
         $this->assertEquals('tokenCreateTime', $result['tokenCreateTime']);

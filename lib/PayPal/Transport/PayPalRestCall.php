@@ -50,8 +50,9 @@ class PayPalRestCall
      * @return mixed
      * @throws \PayPal\Exception\PayPalConnectionException
      */
-    public function execute($handlers = array(), $path, $method, $data = '', $headers = array())
+    public function execute($handlers, $path, $method, $data = '', $headers = array())
     {
+        $handlers = $handlers ?: [];
         $config = $this->apiContext->getConfig();
         $httpConfig = new PayPalHttpConfig(null, $method, $config);
         $headers = $headers ? $headers : array();

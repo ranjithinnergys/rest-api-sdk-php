@@ -46,14 +46,14 @@ abstract class AuthorizationCache
     /**
      * Persists the data into a cache file provided in $CACHE_PATH
      *
-     * @param array|null $config
+     * @param array $config
      * @param      $clientId
      * @param      $accessToken
      * @param      $tokenCreateTime
      * @param      $tokenExpiresIn
      * @throws \Exception
      */
-    public static function push($config = null, $clientId, $accessToken, $tokenCreateTime, $tokenExpiresIn)
+    public static function push($config, $clientId, $accessToken, $tokenCreateTime, $tokenExpiresIn)
     {
         // Return if not enabled
         if (!self::isEnabled($config)) {
@@ -94,7 +94,7 @@ abstract class AuthorizationCache
         $value = self::getConfigValue('cache.enabled', $config);
         return empty($value) ? false : ((trim($value) == true || trim($value) == 'true'));
     }
-    
+
     /**
      * Returns the cache file path
      *

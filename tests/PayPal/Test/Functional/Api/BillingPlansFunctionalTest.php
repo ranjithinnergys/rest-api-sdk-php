@@ -28,7 +28,7 @@ class BillingPlansFunctionalTest extends TestCase
 
     public $apiContext;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $className = $this->getClassName();
         $testName = $this->getName();
@@ -104,7 +104,7 @@ class BillingPlansFunctionalTest extends TestCase
         $result = Plan::get($plan->getId(), $this->apiContext, $this->mockPayPalRestCall);
         $this->assertNotNull($result);
         $this->assertEquals($plan->getId(), $result->getId());
-        $this->assertEquals($plan, $result, "", 0, 10, true);
+        $this->assertEqualsCanonicalizing($plan, $result);
         return $result;
     }
 

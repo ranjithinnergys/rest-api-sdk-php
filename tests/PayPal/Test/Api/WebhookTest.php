@@ -70,7 +70,7 @@ class WebhookTest extends TestCase
     public function testUrlValidationForUrl()
     {
         $obj = new Webhook();
-        $obj->setUrl(null);
+        $obj->setUrl('wrong-url');
     }
     /**
      * @dataProvider mockProvider

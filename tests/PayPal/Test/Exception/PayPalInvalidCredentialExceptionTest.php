@@ -17,7 +17,7 @@ class PayPalInvalidCredentialExceptionTest extends TestCase
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new PayPalInvalidCredentialException;
     }
@@ -26,7 +26,7 @@ class PayPalInvalidCredentialExceptionTest extends TestCase
      * Tears down the fixture, for example, closes a network connection.
      * This method is called after a test is executed.
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -36,6 +36,6 @@ class PayPalInvalidCredentialExceptionTest extends TestCase
     public function testErrorMessage()
     {
         $msg = $this->object->errorMessage();
-        $this->assertContains('Error on line', $msg);
+        $this->assertStringContainsString('Error on line', $msg);
     }
 }

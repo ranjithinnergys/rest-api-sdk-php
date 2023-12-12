@@ -78,7 +78,7 @@ class MerchantPreferencesTest extends TestCase
     public function testUrlValidationForCancelUrl()
     {
         $obj = new MerchantPreferences();
-        $obj->setCancelUrl(null);
+        $obj->setCancelUrl('wrong-url');
     }
     /**
      * @expectedException \InvalidArgumentException
@@ -87,7 +87,7 @@ class MerchantPreferencesTest extends TestCase
     public function testUrlValidationForReturnUrl()
     {
         $obj = new MerchantPreferences();
-        $obj->setReturnUrl(null);
+        $obj->setReturnUrl('wrong-url');
     }
     /**
      * @expectedException \InvalidArgumentException
@@ -96,7 +96,7 @@ class MerchantPreferencesTest extends TestCase
     public function testUrlValidationForNotifyUrl()
     {
         $obj = new MerchantPreferences();
-        $obj->setNotifyUrl(null);
+        $obj->setNotifyUrl('wrong-url');
     }
 
     public function testUrlValidationForCancelUrlDeprecated()
